@@ -18,13 +18,13 @@ socket=/tmp/DB.Cluster
 
 [dbserv1]
 type=server
-address=172.17.42.1
+address={{dbserv1}}
 port=3307
 protocol=MySQLBackend
 
 [dbserv2]
 type=server
-address=172.17.42.1
+address={{dbserv2}}
 port=3308
 protocol=MySQLBackend
 
