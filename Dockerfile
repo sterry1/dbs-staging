@@ -1,11 +1,11 @@
 # Percona XtraDB Cluster 5.6
 #
 # VERSION 1.0
-# DOCKER-VERSION 0.81
+# DOCKER-VERSION 1.7.1
 #
 # tag: latest
 FROM ubuntu:latest
-MAINTAINER Alex Yu <alex@alexyu.se>
+MAINTAINER Steve Terry <sterry1@tacc.utexas.edu>
 
 RUN echo 'root:root123' | chpasswd
 RUN apt-get update

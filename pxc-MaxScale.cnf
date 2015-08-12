@@ -1,0 +1,47 @@
+[maxscale]
+threads=4
+
+[Galera Service]
+type=service
+router=readconnroute
+router_options=synced
+servers=dbserv1,dbserv2
+user=maxscale
+passwd=d3f@ult$
+
+[Galera Listener]
+type=listener
+service=Galera Service
+protocol=MySQLClient
+port=3306
+socket=/tmp/DB.Cluster
+
+[dbserv1]
+type=server
+address=172.17.42.1
+port=3307
+protocol=MySQLBackend
+
+[dbserv2]
+type=server
+address=172.17.42.1
+port=3308
+protocol=MySQLBackend
+
+[Galera Monitor]
+type=monitor
+module=galeramon
+servers=dbserv1,dbserv2
+user=maxscale
+passwd=d3f@ult$
+
+[CLI]
+type=service
+router=cli
+
+[CLI Listener]
+type=listener
+service=CLI
+protocol=maxscaled
+address=localhost
+port=6604

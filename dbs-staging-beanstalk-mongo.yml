@@ -1,0 +1,14 @@
+mongo:
+  image: mongo:2.6
+  ports:
+    - "27017:27017"
+  mem_limit: 1000000000
+  volumes:
+    - /mnt/data/mongo:/data/db
+beanstalkd:
+  image: agaveapi/beanstalkd
+  ports:
+    - "11300:11300"
+  mem_limit: 2000000000
+  volumes:
+    - /mnt/data/beanstalkd:/data
