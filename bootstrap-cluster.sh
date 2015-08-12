@@ -55,25 +55,16 @@ for c in "${ids[@]}"; do
     echo "command done"
 done
  
-#for h in "${hosts[@]}"; do
-#    echo "ssh $user@$h \"sed -i \"s|.*wsrep_cluster_address.*=.*|$address|g\" $mycnf\""
-#    ssh $user@$h "sed -i \"s|.*wsrep_cluster_address.*=.*|$address|g\" $mycnf"
-#done
-
 init_node=${hosts[0]}
 unset hosts[0]
 
-for c in "${ids[@]}"; do
-    echo "docker exec $c \"rm -f /var/lib/mysql/grastate.dat\""
-    echo "rm grastate.dat for galera cluster init"
+#for c in "${ids[@]}"; do
+#    echo "docker exec $c \"rm -f /var/lib/mysql/grastate.dat\""
+#    echo "rm grastate.dat for galera cluster init"
 #    docker exec $c 'rm -f /var/lib/mysql/grastate.dat'
-    echo "docker exec $c \"service mysql restart\""
-    echo "restart mysql with cluster settings"
+#    echo "docker exec $c \"service mysql restart\""
+#    echo "restart mysql with cluster settings"
 #    docker exec $c /etc/init.d/mysql restart
-    echo "command done"
-done
-
-#for h in "${hosts[@]}"; do
-#    exec_cmd ssh $user@$h "rm -f /var/lib/mysql/grastate.dat && service mysql restart"
-#    echo "***"
+#    echo "command done"
 #done
+
