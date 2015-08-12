@@ -67,10 +67,10 @@ for percona-cluster and maxscale loadbalancer on agave-dbs-staging.tacc.utexas.e
     sudo cp add-core-users.sql trunc-core-data-7.23.sql /mnt/data/ubuntu-pxc56/mysql-1
 
 ### run sql script for users on bootstrap galera-1
-    ubuntu@vagrant-minion-1:~/staging$ docker exec galera-1 mysql -uroot -proot123 -e "source /var/lib/mysql/add-core-users.sql;"
+    docker exec galera-1 mysql -uroot -proot123 -e "source /var/lib/mysql/add-core-users.sql;"
 
 ### verify
-    ubuntu@vagrant-minion-1:~/staging$ docker exec galera-1 mysql -uroot -proot123 -e "select User, Host from mysql.user;"
+    docker exec galera-1 mysql -uroot -proot123 -e "select User, Host from mysql.user;"
 
 ### run sql to add agave-api db with truncated data
     docker exec galera-1 mysql -uroot -proot123 -e "source /var/lib/mysql/trunc-core-data-7.23.sql;"
