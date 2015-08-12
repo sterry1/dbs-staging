@@ -86,7 +86,7 @@ for percona-cluster and maxscale loadbalancer on agave-dbs-staging.tacc.utexas.e
     docker-compose -f dbs-staging-percona-core.yml up -d
 
 ### access cluster thru maxscale on whatever host you are using
-    mysql -uagaveapi -pd3f@ult$ -P3301 -h129.114.7.140
+     mysql -uagaveapi -pd3f@ult$ -P3301 -h129.114.7.140 -e "use agave-api;select id from softwares where id < 100;"
 
     Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
 
