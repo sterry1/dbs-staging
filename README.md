@@ -24,6 +24,7 @@ for percona-cluster and maxscale loadbalancer on agave-dbs-staging.tacc.utexas.e
 ### Prerequisites (constructed with)
     * Docker 1.7.1
     * Docker-compose 1.3.2
+    * Tested on Ubuntu 14.04 may?? work on other distributions
 
 ### Setup
 
