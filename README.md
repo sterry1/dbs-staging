@@ -42,6 +42,9 @@ for percona-cluster and maxscale loadbalancer on agave-dbs-staging.tacc.utexas.e
 ### startup 2 containers and initialze mysql servers w/vol mount.
     ./start-servers.sh 2
 
+### copy user and data sql to volume mount
+    sudo cp add-core-users.sql trunc-core-data-7.23.sql /mnt/data/ubuntu-pxc56/mysql-1
+
 ### stop mysql wo stopping containers.
     docker exec galera-1 service mysql stop
     docker exec galera-2 service mysql stop
@@ -63,9 +66,6 @@ for percona-cluster and maxscale loadbalancer on agave-dbs-staging.tacc.utexas.e
     docker exec galera-1 mysql -uroot -proot123 -e "show status like '%wsrep%'"
     wsrep_cluster_conf_id	2
     wsrep_cluster_size	2
-
-### copy user and data sql to volume mount
-    sudo cp add-core-users.sql trunc-core-data-7.23.sql /mnt/data/ubuntu-pxc56/mysql-1
 
 ### run sql script for users on bootstrap galera-1
     docker exec galera-1 mysql -uroot -proot123 -e "source /var/lib/mysql/add-core-users.sql;"
