@@ -7,12 +7,16 @@ if [[ ! -f /var/lib/mysql/ibdata1 ]]; then
 
     x="root123"
     cat > "/tmp/secure.sql" << EOF
-DELETE FROM mysql.user WHERE User='';
-DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
-DROP DATABASE IF EXISTS test; DELETE FROM mysql.db WHERE DB='test' OR DB='test\\_%';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY '$x' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'127.0.0.1' IDENTIFIED BY '$x' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.17.42.1' IDENTIFIED BY '$x' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$x' WITH GRANT OPTION;
+CREATE USER 'agaveapi'@'%' IDENTIFIED BY 'd3f@ult$';
+GRANT ALL PRIVILEGES ON *.* TO 'agaveapi'@'%';
+CREATE USER 'maxscale'@'%' IDENTIFIED BY 'd3f@ult$';
+GRANT ALL PRIVILEGES ON *.* TO 'maxscale'@'%';
+GRANT SELECT ON `mysql`.`db` TO 'maxscale'@'%';
+GRANT SELECT ON `mysql`.`user` TO 'maxscale'@'%';
 FLUSH PRIVILEGES;
 EOF
     echo "*** Securing MySQL ($host)..."
