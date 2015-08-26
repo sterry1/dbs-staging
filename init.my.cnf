@@ -86,8 +86,8 @@ innodb_stats_on_metadata = 0
 wsrep_provider = /usr/lib/libgalera_smm.so
 
 # stevet uncomment and set value
-#ex. wsrep_node_address =129.114.7.98:4567
-wsrep_node_address =129.114.7.98:4567
+#wsrep_node_address =129.114.7.98:4567
+#wsrep_node_address =
 
 # Provider specific configuration options
 wsrep_provider_options = "gcache.size=128M"
@@ -96,12 +96,12 @@ wsrep_provider_options = "gcache.size=128M"
 wsrep_cluster_name="galera_cluster"
 
 # Group communication system handle stevet
-#ex. wsrep_cluster_address = gcomm://129.114.7.98:4567,129.114.7.198:4567
-wsrep_cluster_address = gcomm://129.114.7.98:4567,129.114.7.198:4567
+# wsrep_cluster_address = gcomm://129.114.7.98:4567,129.114.7.198:4567
+wsrep_cluster_address = gcomm://
 
 # Human-readable node name (non-unique). Hostname by default. stevet
-#ex. wsrep_node_name = bootstrap
-wsrep_node_name = bootstrap
+#wsrep_node_name = bootstrap
+#wsrep_node_name =
 
 # Address for incoming client connections. Autodetect by default. stevet
 #wsrep_node_incoming_address =129.114.7.98:3306
@@ -161,8 +161,8 @@ wsrep_sst_method = xtrabackup-v2
 # Address on THIS node to receive SST at. DON'T SET IT TO DONOR ADDRESS!!!
 # (SST method dependent. Defaults to the first IP of the first interface)
 # stevet set this based on documentation and log errors found
-#ex. wsrep_sst_receive_address =129.114.7.98
-wsrep_sst_receive_address =129.114.7.98
+#wsrep_sst_receive_address =129.114.7.98
+#wsrep_sst_receive_address =
 
 # SST authentication string. This will be used to send SST to joining nodes.
 # Depends on SST method. For mysqldump method it is root:<root password>

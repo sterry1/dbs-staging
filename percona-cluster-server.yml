@@ -1,0 +1,11 @@
+# need to construct the correct path
+# derived from georce/maxscale and https://github.com/alyu/docker for percona xtra-db 5.6
+
+percona:
+  image: agaveapi/ubuntu:pxc56
+  ports:
+    - "3306:3306"
+  environment:
+
+  volumes:
+ 
