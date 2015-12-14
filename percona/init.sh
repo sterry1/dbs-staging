@@ -42,7 +42,7 @@ GRANT ALL PRIVILEGES ON `apimgtdb_irec`.* TO 'apim_irec_admin'@'%';
 FLUSH PRIVILEGES;
 EOF
     echo "*** Securing MySQL ($host)..."
-    /usr/bin/mysql -uroot -h127.0.0.1 < /tmp/secure.sql; rm -f /tmp/secure.sql
+    /usr/bin/mysql -uroot  -h127.0.0.1 < /tmp/secure.sql; rm -f /tmp/secure.sql
 
     killall -15 mysqld_safe mysqld
     chown -R mysql.mysql /var/lib/mysql
@@ -52,4 +52,5 @@ fi
 grep -v rootfs /proc/mounts > /etc/mtab
 /usr/bin/mysqld_safe &
 
-/usr/bin/supervisord
+sleep infinity
+ #/usr/bin/supervisord
